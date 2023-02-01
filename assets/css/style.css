@@ -1,0 +1,113 @@
+:root {
+    --languid-lavendar: #e1d6f8;
+    --lapis-lazuli: #25629B;
+    --periwinkle-crayola: #cdd3f4;
+    --dark-cornflower-blue: #03387d;
+    --royal-blue-dark: #052a6a;
+    --bg-grad-2: 0deg, var(--lapis-lazuli), var(--periwinkle-crayola), var(--dark-cornflower-blue), var(--royal-blue-dark);
+}
+
+:root {
+    --bg-grad: 0deg, #569fa5, #844fa7, #453d61, #000000, #000000, #453d61, #844fa7, #569fa5;
+}
+
+
+body {
+    padding: 10px;
+    background: linear-gradient(var(--bg-grad-2));
+    background-size: 100vw 150vh;
+    position: relative;
+    
+}
+
+header {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 35px;
+    
+    color: var(--languid-lavendar);
+    font-family:'Yeon Sung', cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    font-size: 40px;
+    text-shadow: var(--periwinkle-crayola) 0px 1px 10px ;
+}
+
+p {
+    font-size: 25px;
+}
+
+main {
+    display: flex;
+}
+
+#search-and-hist {
+    font-family:'Yeon Sung', cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: var(--languid-lavendar);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid var(--dark-cornflower-blue) 
+    
+}
+
+.input-group {
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+#search-btn {
+    background-color: var(--dark-cornflower-blue);
+    color: var(--periwinkle-crayola);
+    max-width: 130px;
+    margin-top: 3px;
+}
+
+.hist-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.hst-Btn {
+    background-color: var(--periwinkle-crayola);
+    margin-top: 3px;
+    max-width: 130px;
+    box-shadow: 2px 2px var(--royal-blue-dark);
+}
+
+#weather-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding: 10px;
+}
+
+.card {
+    margin:10px;
+    border: 3px solid var(--dark-cornflower-blue);
+    word-wrap: normal;
+    background-color: var(--languid-lavendar);
+    padding: 6px;
+}
+
+#day-0 {
+
+    min-width: 400px;
+}
+
+li {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.city-name {
+    text-align: center;
+    font-size: 30px;
+}
+
+#clear, #clearli {
+    margin-top: 30px;
+    font-family: 'Orbitron', sans-serif;
+}

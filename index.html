@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Yeon+Sung&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css" />
+
+</head>
+<body>
+    <header>
+        <h1>SCLOPE THIS WEATHER APP</h1>
+        <p>refresh after search to populate history</p>
+    </header>
+    <main>
+        <section id="search-and-hist">
+            
+            <div class="input-group">
+                <label for="search-field">search a city</label>
+                <input type="text" id="city-search" name="search-field" placeholder="search a  place" />
+                
+            </div>
+            <div class="input-group">
+                <label for="search-field">state</label>
+                <input type="text" id="state-search" name="search-field" placeholder="search a  place" />
+            </div>
+            <div class="input-group">
+                <label for="search-field">country</label>
+                <input type="text" id="country-search" name="search-field" placeholder="search a  place" />
+            </div>
+            <button id="search-btn">Search</button>
+            <div class = "history">
+                <div class = "hist-list">
+                    
+                </div>
+            </div>
+
+        </section>
+        <section id="weather-info">
+            <div class="card" id="day-0">
+                <ul class="list-0">
+                </ul>
+            </div>
+            <div class = "card" id="day-1">
+                <ul class="list-1"></ul>
+            </div>
+            <div class = "card" id="day-2">
+                <ul class="list-2"></ul>
+            </div>
+            <div class = "card" id="day-3">
+                <ul class="list-3"></ul>
+            </div>
+            <div class = "card" id="day-4">
+                <ul class="list-4"></ul>
+            </div>
+        </section>
+    </main>
+    <button id="clear">clear local storage</button>
+    <button id="clearli">clear line items</button>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>
+
