@@ -24,7 +24,7 @@ $(function () {
 
   function cityToCoords(city, state, country) {
     fetch(
-      "http://api.openweathermap.org/geo/1.0/direct?q=" +
+      "https://api.openweathermap.org/geo/1.0/direct?q=" +
         city +
         "," +
         state +
