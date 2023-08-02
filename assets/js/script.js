@@ -6,6 +6,7 @@ $(function () {
   var srchBtnEl = document.getElementById("search-btn");
   var cityKey = 0;
   var clearBtnEl = $("#clear");
+  var weatherInfoEl = $("#weather-info");
   var listZeroEl = $(".list-0");
   var listOneEl = $(".list-1");
   var listTwoEl = $(".list-2");
@@ -109,12 +110,8 @@ $(function () {
         return response.json();
       })
       .then(function (data) {
-        console.log(data);
-        console.log(data["city"].name);
         console.log(data["list"]);
         var dataList = data["list"];
-        console.log(dataList[0].dt_txt);
-        console.log(dataList[1].dt_txt);
         var cityliEl = $("<li>");
         cityliEl.addClass("city-name");
         cityliEl.text(data["city"].name);
@@ -140,11 +137,22 @@ $(function () {
           ul.append(dateEl, img, tempEl, humEl, windEl);
         }
 
-        makeLines(0, listZeroEl);
-        makeLines(8, listOneEl);
-        makeLines(16, listTwoEl);
-        makeLines(24, listThreeEl);
-        makeLines(32, listFourEl);
+        for (let i = 0; i < 39; i++) {
+          var newCard = $("<div>");
+          newCard.addClass("card");
+          newCard.addClass("day-" + i);
+          var newUl = $("<ul>");
+          newUl.addClass("list-" + i);
+          newCard.append(newUl);
+          makeLines(i, newUl);
+          weatherInfoEl.append(newCard);
+        }
+
+        // makeLines(0, listZeroEl);
+        // makeLines(8, listOneEl);
+        // makeLines(16, listTwoEl);
+        // makeLines(24, listThreeEl);
+        // makeLines(32, listFourEl);
       });
   }
 
