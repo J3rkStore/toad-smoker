@@ -4,18 +4,28 @@ $(function () {
   var lon = "";
   var histListEl = $(".hist-list");
   var srchBtnEl = document.getElementById("search-btn");
+  var reloadBtnEl = $(".reload");
   var cityKey = 0;
   var clearBtnEl = $("#clear");
   var weatherInfoEl = $("#weather-info");
-  var listZeroEl = $(".list-0");
-  var listOneEl = $(".list-1");
-  var listTwoEl = $(".list-2");
-  var listThreeEl = $(".list-3");
-  var listFourEl = $(".list-4");
+  var cityNameHeader = $(".city-name-header");
+  var coordsEl = $(".coords");
+  var utcTimeEl = $(".time");
+  // var listOneEl = $(".list-1");
+  // var listTwoEl = $(".list-2");
+  // var listThreeEl = $(".list-3");
+  // var listFourEl = $(".list-4");
+  const now = new Date();
+  utcTimeEl.append(now.getUTCHours() + ":" + now.getUTCMinutes());
 
   clearBtnEl.on("click", function () {
     localStorage.clear();
     $(".hst-Btn").remove();
+  });
+
+  reloadBtnEl.on("click", function () {
+    console.log("clicked reload");
+    location.reload();
   });
 
   //'&units=imperial' at the end of the api call
@@ -65,6 +75,8 @@ $(function () {
       localStorage.setItem("city " + cityKey, apiCall);
       cityKey++;
     }
+    localStorage.setItem("last-city", apiCall);
+    location.reload();
   }
 
   async function createButtons() {
@@ -96,13 +108,24 @@ $(function () {
 
       console.log("you clicked", thisOne);
       console.log(e);
-      requestInfo(localStorage.getItem("city " + thisOne));
+      // requestInfo(localStorage.getItem("city " + thisOne));
+      localStorage.setItem(
+        "last-city",
+        localStorage.getItem("city " + thisOne)
+      );
+
+      console.log("reloading...");
+      location.reload();
+
+      // location.reload();
     });
   }
 
   createButtons();
+  requestInfo(localStorage.getItem("last-city"));
 
   function requestInfo(call) {
+    localStorage.setItem("last-city", call);
     $("li").remove();
     $("img").remove();
     fetch(call)
@@ -110,12 +133,24 @@ $(function () {
         return response.json();
       })
       .then(function (data) {
+        console.log("data");
+        console.log(data);
+        console.log("data list");
         console.log(data["list"]);
         var dataList = data["list"];
-        var cityliEl = $("<li>");
-        cityliEl.addClass("city-name");
-        cityliEl.text(data["city"].name);
-        listZeroEl.append(cityliEl);
+        // var cityliEl = $("<li>");
+        // cityliEl.addClass("city-name");
+        // cityliEl.text(data["city"].name);
+        //cityNameHeader.append(cityliEl);
+        cityNameHeader.text(data["city"].name + " " + data["city"].country);
+        console.log("latitude");
+        console.log(data["city"].coord["lat"]);
+        coordsEl.text(
+          "latitude: " +
+            data["city"].coord["lat"] +
+            " longitude: " +
+            data["city"].coord["lon"]
+        );
 
         function makeLines(i, ul) {
           var img = $("<img>");
@@ -125,6 +160,8 @@ $(function () {
               dataList[i].weather[0].icon +
               "@2x.png"
           );
+          var descriptionEl = $("<li>");
+          descriptionEl.text(dataList[i].weather[0].description);
           var dateEl = $("<li>");
           dateEl.text(dataList[i].dt_txt);
           var tempEl = $("<li>");
@@ -134,7 +171,7 @@ $(function () {
           var windEl = $("<li>");
           windEl.text("wind speed " + dataList[i].wind.speed);
 
-          ul.append(dateEl, img, tempEl, humEl, windEl);
+          ul.append(dateEl, img, descriptionEl, tempEl, humEl, windEl);
         }
 
         for (let i = 0; i < 39; i++) {
