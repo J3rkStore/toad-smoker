@@ -33,6 +33,8 @@ $(function () {
   var testEx =
     "https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=62fd8b3b3f53537fa28c78f62e47e245";
 
+  // current weather example https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API key}
+
   function cityToCoords(city, state, country) {
     fetch(
       "https://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -142,14 +144,23 @@ $(function () {
         // cityliEl.addClass("city-name");
         // cityliEl.text(data["city"].name);
         //cityNameHeader.append(cityliEl);
-        cityNameHeader.text(data["city"].name + " " + data["city"].country);
+        cityNameHeader.text(
+          data["city"].name +
+            ", " +
+            data["city"].country +
+            "  |  Timezone: " +
+            data["city"].timezone +
+            " seconds different from UTC"
+        );
         console.log("latitude");
         console.log(data["city"].coord["lat"]);
         coordsEl.text(
           "latitude: " +
             data["city"].coord["lat"] +
             " longitude: " +
-            data["city"].coord["lon"]
+            data["city"].coord["lon"] +
+            " population " +
+            data["city"].population
         );
 
         function makeLines(i, ul) {
@@ -169,9 +180,11 @@ $(function () {
           var humEl = $("<li>");
           humEl.text("humidity " + dataList[i].main.humidity);
           var windEl = $("<li>");
-          windEl.text("wind speed " + dataList[i].wind.speed);
+          windEl.text("wind speed (mph) " + dataList[i].wind.speed);
+          var pressEl = $("<li>");
+          pressEl.text("atm press (hPa) " + dataList[i].main.pressure);
 
-          ul.append(dateEl, img, descriptionEl, tempEl, humEl, windEl);
+          ul.append(dateEl, img, descriptionEl, tempEl, humEl, windEl, pressEl);
         }
 
         for (let i = 0; i < 39; i++) {
