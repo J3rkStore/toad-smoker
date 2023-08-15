@@ -1,0 +1,18 @@
+{
+    "icons": [
+      {
+        "src": "./assets/icons/icon.png",
+        "sizes": "768x768",
+        "type": "image/png"
+      }
+    ],
+    "name": "Weatheringo - weather checker",
+    "short_name": "Weatheringo",
+    "orientation": "portrait",
+    "display": "standalone",
+    "start_url": "./",
+    "id": "./",
+    "description": "shows you the weather",
+    "background_color": "#225ca3",
+    "theme_color": "#225ca3"
+  }
