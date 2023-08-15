@@ -66,6 +66,11 @@ main {
     margin-top: 3px;
 }
 
+.reload {
+    max-width: 130px;
+    margin-top: 3px;
+}
+
 .hist-list {
     display: flex;
     flex-direction: column;
@@ -133,3 +138,27 @@ li {
     margin-top: 30px;
     font-family: 'Orbitron', sans-serif;
 }
+
+@media screen and (max-width: 1000px) {
+    main {
+      flex-direction: column;
+    }
+    .hist-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .hst-Btn {
+        padding: 2px;
+        margin-right: 5px;
+    }
+    .city-name-and-weather-info {
+        margin-left: 0px;
+    }
+    .city-name-container {
+        justify-content: center;
+        text-align: center;
+    }
+    #weather-info {
+        justify-content: center;
+    }
+  }
