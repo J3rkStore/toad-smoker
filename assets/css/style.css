@@ -1,38 +1,45 @@
-:root {
-    --languid-lavendar: #e1d6f8;
-    --lapis-lazuli: #25629B;
-    --periwinkle-crayola: #cdd3f4;
-    --dark-cornflower-blue: #03387d;
-    --royal-blue-dark: #052a6a;
-    --bg-grad-2: 0deg, var(--lapis-lazuli), var(--periwinkle-crayola), var(--dark-cornflower-blue), var(--royal-blue-dark), var(--dark-cornflower-blue), var(--lapis-lazuli);
-}
-
-:root {
-    --bg-grad: 0deg, #569fa5, #844fa7, #453d61, #000000, #000000, #453d61, #844fa7, #569fa5;
+body {
+    --main-text: #e1d6f8;
+    --secondary-color: #25629B;
+    --third-background: #cdd3f4;
+    --deep-background: #03387d;
+    --dark-background: #052a6a;
+    --bg-grad: 0deg, var(--secondary-color), var(--third-background), var(--deep-background), var(--dark-background), var(--deep-background), var(--secondary-color);
 }
 
 
 body {
     padding: 10px;
-    background: linear-gradient(var(--bg-grad-2));
-    background-size: 100vw 200vh;
+    background: linear-gradient(var(--bg-grad));
+    background-size: 100vw 300vh;
     position: relative;
     font-family: 'tektur', 'Ubuntu Mono', monospace, 'Courier New', Courier, monospace, fantasy, 'berkeley mono', 'Yeon Sung', cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     
 }
+
+.site-theme-dark {
+    color: #dcdcdc;
+    --main-text: #cec1e1;
+    --secondary-color: #8e80b5;
+    --third-background: #8271a1;
+    --box-background: #0c001c68;
+    --deep-background: #00002b;
+    --dark-background: #0f0834;
+    --bg-grad: 0deg, var(--deep-background), var(--dark-background), var(--deep-background);
+    }
+
 
 header {
     position: relative;
     text-align: center;
     margin-top: 20px;
     margin-bottom: 35px;
-    
-    color: var(--languid-lavendar);
+    color: var(--main-text);
 }
 
 h1 {
     font-size: 40px;
-    text-shadow: var(--periwinkle-crayola) 0px 1px 10px ;
+    text-shadow: var(--third-background) 0px 1px 10px ;
     font-family: 'Oxanium', 'Yeon Sung', cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
@@ -46,12 +53,15 @@ main {
 
 #search-and-hist {
     /* font-family: 'Courier New', Courier, monospace, fantasy, 'berkeley mono', 'Yeon Sung', cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-    background-color: var(--languid-lavendar);
+    background-color: var(--main-text);
     padding: 10px;
     display: flex;
     flex-direction: column;
-    border: 3px solid var(--dark-cornflower-blue) 
-    
+    border: 3px solid var(--deep-background)   
+}
+
+.site-theme-dark #search-and-hist {
+    background-color: var(--box-background);
 }
 
 .input-group {
@@ -60,13 +70,13 @@ main {
 }
 
 #search-btn {
-    background-color: var(--dark-cornflower-blue);
-    color: var(--periwinkle-crayola);
+    background-color: var(--deep-background);
+    color: var(--third-background);
     max-width: 130px;
     margin-top: 3px;
 }
 
-.reload {
+.grey-btn {
     max-width: 130px;
     margin-top: 3px;
 }
@@ -77,10 +87,10 @@ main {
 }
 
 .hst-Btn {
-    background-color: var(--periwinkle-crayola);
+    background-color: var(--third-background);
     margin-top: 3px;
     max-width: 130px;
-    box-shadow: 2px 2px var(--royal-blue-dark);
+    box-shadow: 2px 2px var(--dark-background);
 }
 
 .city-name-and-weather-info {
@@ -94,7 +104,7 @@ main {
 
 .city-name-container h2, h3 {
     font-family: 'Orbitron', sans-serif;
-    color: var(--languid-lavendar);
+    color: var(--main-text);
 }
 
 .city-name-header {
@@ -114,10 +124,14 @@ main {
 
 .card {
     margin:10px;
-    border: 3px solid var(--dark-cornflower-blue);
+    border: 3px solid var(--deep-background);
     word-wrap: normal;
-    background-color: var(--languid-lavendar);
+    background-color: var(--main-text);
     padding: 6px;
+}
+
+.site-theme-dark .card {
+    background-color: var(--box-background);
 }
 
 #day-0 {

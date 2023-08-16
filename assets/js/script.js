@@ -11,10 +11,9 @@ $(function () {
   var cityNameHeader = $(".city-name-header");
   var coordsEl = $(".coords");
   var utcTimeEl = $(".time");
-  // var listOneEl = $(".list-1");
-  // var listTwoEl = $(".list-2");
-  // var listThreeEl = $(".list-3");
-  // var listFourEl = $(".list-4");
+  var darkBtnEl = $(".dark-theme");
+  var defaultBtnEl = $(".default-theme");
+
   const now = new Date();
   utcTimeEl.append(now.getUTCHours() + ":" + now.getUTCMinutes());
 
@@ -34,6 +33,14 @@ $(function () {
     "https://api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=62fd8b3b3f53537fa28c78f62e47e245";
 
   // current weather example https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API key}
+
+  function checkTheme() {
+    if (localStorage.getItem("theme") === "dark") {
+      $("body").addClass("site-theme-dark");
+    }
+  }
+
+  checkTheme();
 
   function cityToCoords(city, state, country) {
     fetch(
@@ -215,5 +222,16 @@ $(function () {
 
   $("#clearli").click(function () {
     $("li").remove();
+  });
+
+  $(darkBtnEl).on("click", function () {
+    localStorage.setItem("theme", "dark");
+    console.log("reloading...");
+    location.reload();
+  });
+  $(defaultBtnEl).on("click", function () {
+    localStorage.setItem("theme", "default");
+    console.log("reloading...");
+    location.reload();
   });
 });
