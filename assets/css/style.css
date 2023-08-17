@@ -166,6 +166,7 @@ li {
         flex-wrap: wrap;
     }
     .hst-Btn {
+        font-size: 25px;
         padding: 2px;
         margin-right: 5px;
     }
@@ -182,8 +183,13 @@ li {
         justify-content: center;
     }
     #search-btn {
-        font-size: 30px;
+        font-size: 40px;
         min-width: 50px;
         min-height: 30px;
+        margin-bottom: 10px;
+    }
+    .input-group {
+        min-height: 60px;
+        font-size: 40px;
     }
   }
