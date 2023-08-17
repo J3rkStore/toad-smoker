@@ -38,13 +38,21 @@ header {
 }
 
 h1 {
-    font-size: 40px;
-    text-shadow: var(--third-background) 0px 1px 10px ;
+    font-size: 90px;
+    text-shadow: var(--third-background) 0px 0px 50px ;
     font-family: 'Oxanium', 'Yeon Sung', cursive, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-p {
+h2 {
+    font-size: 40px;
+}
+
+h3 {
     font-size: 25px;
+}
+
+.time {
+    font-size: 45px;
 }
 
 main {
@@ -107,13 +115,6 @@ main {
     color: var(--main-text);
 }
 
-.city-name-header {
-    font-size: 20px;
-}
-
-.coords {
-    font-size: 12px;
-}
 
 #weather-info {
     display: flex;
@@ -123,7 +124,9 @@ main {
 }
 
 .card {
+    min-width: 200px;
     margin:10px;
+    margin-bottom: 30px;
     border: 3px solid var(--deep-background);
     word-wrap: normal;
     background-color: var(--main-text);
@@ -132,6 +135,7 @@ main {
 
 .site-theme-dark .card {
     background-color: var(--box-background);
+    box-shadow: var(--main-text) 0px 0px 20px;
 }
 
 #day-0 {
@@ -162,6 +166,7 @@ li {
         flex-wrap: wrap;
     }
     .hst-Btn {
+        font-size: 25px;
         padding: 2px;
         margin-right: 5px;
     }
@@ -171,8 +176,20 @@ li {
     .city-name-container {
         justify-content: center;
         text-align: center;
+        margin-left: 0px;
+        margin-bottom: 25px;
     }
     #weather-info {
         justify-content: center;
+    }
+    #search-btn {
+        font-size: 40px;
+        min-width: 50px;
+        min-height: 30px;
+        margin-bottom: 10px;
+    }
+    .input-group {
+        min-height: 60px;
+        font-size: 40px;
     }
   }
