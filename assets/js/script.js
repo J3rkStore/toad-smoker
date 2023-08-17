@@ -106,8 +106,6 @@ $(function () {
             newBtnEl.addClass("hst-Btn");
             newBtnEl.text(cityName);
             histListEl.append(newBtnEl);
-            console.log("hist list el " + i);
-            console.log(histListEl);
           });
       } else break;
     }
@@ -147,17 +145,19 @@ $(function () {
         console.log("data list");
         console.log(data["list"]);
         var dataList = data["list"];
-        // var cityliEl = $("<li>");
-        // cityliEl.addClass("city-name");
-        // cityliEl.text(data["city"].name);
-        //cityNameHeader.append(cityliEl);
+        var timeDiff = data["city"].timezone / 3600;
+        const aheadBehind = function (e) {
+          if (e < 0) {
+            return " hours behind UTC";
+          } else return " hours ahead of UTC";
+        };
         cityNameHeader.text(
           data["city"].name +
             ", " +
             data["city"].country +
             "  |  Timezone: " +
-            data["city"].timezone +
-            " seconds different from UTC"
+            timeDiff +
+            aheadBehind(timeDiff)
         );
         console.log("latitude");
         console.log(data["city"].coord["lat"]);
@@ -182,6 +182,33 @@ $(function () {
           descriptionEl.text(dataList[i].weather[0].description);
           var dateEl = $("<li>");
           dateEl.text(dataList[i].dt_txt);
+          var dateSec = $("<li>");
+          var seconds = dataList[i].dt;
+          const dateMath = seconds + data["city"].timezone;
+          const dateObject = new Date(dateMath);
+
+          function format_time(s) {
+            const dtFormat = new Intl.DateTimeFormat("en-GB", {
+              dateStyle: "full",
+              timeStyle: "medium",
+              timeZone: "UTC",
+            });
+
+            return dtFormat.format(new Date(s * 1e3));
+          }
+
+          console.log("format time");
+          console.log(format_time(dateMath));
+
+          console.log("dateObject date ");
+          console.log(dateObject.toString());
+          // console.log(dateObject.toDateString());
+          const dateToString = dateObject.toString();
+          const noTimeZone = dateToString.split("GMT");
+          console.log(noTimeZone);
+          dateSec.text(noTimeZone[0]);
+          var dateTimeEl = $("<li>");
+          dateTimeEl.text(format_time(dateMath));
           var tempEl = $("<li>");
           tempEl.text("Temp " + dataList[i].main.temp);
           var humEl = $("<li>");
@@ -191,7 +218,15 @@ $(function () {
           var pressEl = $("<li>");
           pressEl.text("atm press (hPa) " + dataList[i].main.pressure);
 
-          ul.append(dateEl, img, descriptionEl, tempEl, humEl, windEl, pressEl);
+          ul.append(
+            dateTimeEl,
+            img,
+            descriptionEl,
+            tempEl,
+            humEl,
+            windEl,
+            pressEl
+          );
         }
 
         for (let i = 0; i < 39; i++) {
@@ -204,12 +239,6 @@ $(function () {
           makeLines(i, newUl);
           weatherInfoEl.append(newCard);
         }
-
-        // makeLines(0, listZeroEl);
-        // makeLines(8, listOneEl);
-        // makeLines(16, listTwoEl);
-        // makeLines(24, listThreeEl);
-        // makeLines(32, listFourEl);
       });
   }
 
